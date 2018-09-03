@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="未来属于我们当中那些仍然愿意弄脏双手的少数分子">
+<meta name="description" content="为什么需要自己搭建网盘 目前网盘大部分不是限速就是限制容量，体验太差； 分享不受限制，高级功能不受会员限制； 具有局域网最大速度访问优势，在线浏览图片、影音速度都可以慢速需求。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="测试文章">
 <meta property="og:url" content="http://yoursite.com/2018/09/03/测试文章/index.html">
 <meta property="og:site_name" content="iBeta">
-<meta property="og:description" content="未来属于我们当中那些仍然愿意弄脏双手的少数分子">
+<meta property="og:description" content="为什么需要自己搭建网盘 目前网盘大部分不是限速就是限制容量，体验太差； 分享不受限制，高级功能不受会员限制； 具有局域网最大速度访问优势，在线浏览图片、影音速度都可以慢速需求。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-03T07:32:18.298Z">
+<meta property="og:image" content="https://qn.zhangyongcun.com/2017-11-28-hero-1.png">
+<meta property="og:image" content="https://qn.zhangyongcun.com/2017-11-28-031630.png">
+<meta property="og:image" content="https://qn.zhangyongcun.com/2017-11-28-031914.png">
+<meta property="og:updated_time" content="2018-09-03T11:35:03.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="测试文章">
-<meta name="twitter:description" content="未来属于我们当中那些仍然愿意弄脏双手的少数分子">
+<meta name="twitter:description" content="为什么需要自己搭建网盘 目前网盘大部分不是限速就是限制容量，体验太差； 分享不受限制，高级功能不受会员限制； 具有局域网最大速度访问优势，在线浏览图片、影音速度都可以慢速需求。">
+<meta name="twitter:image" content="https://qn.zhangyongcun.com/2017-11-28-hero-1.png">
 
 
 
@@ -351,7 +355,53 @@
       
 
       
-        
+        <hr>
+<p><img src="https://qn.zhangyongcun.com/2017-11-28-hero-1.png" alt=""></p>
+<h3 id="为什么需要自己搭建网盘"><a href="#为什么需要自己搭建网盘" class="headerlink" title="为什么需要自己搭建网盘"></a>为什么需要自己搭建网盘</h3><ul>
+<li>目前网盘大部分不是限速就是限制容量，体验太差；</li>
+<li>分享不受限制，高级功能不受会员限制；</li>
+<li>具有局域网最大速度访问优势，在线浏览图片、影音速度都可以慢速需求。</li>
+</ul>
+<a id="more"></a>
+<h3 id="FileManager-是什么？"><a href="#FileManager-是什么？" class="headerlink" title="FileManager 是什么？"></a>FileManager 是什么？</h3><ul>
+<li>基于 Go 语言提供 Web 交互的文件管理程序，操作方便，轻量级搭建极其简单，多平台支持，可以运行在路由器中；</li>
+<li>多用户管理，可以共享系统给他人使用；</li>
+<li>文件上传、下载(支持打包下载)、预览、文档在线编辑功能、目录和文件管理创建。</li>
+</ul>
+<h3 id="我的使用场景"><a href="#我的使用场景" class="headerlink" title="我的使用场景"></a>我的使用场景</h3><ul>
+<li>临时分享文件使用。如果搭建在服务器上，服务器空间昂贵，但是上传和下载速度比普通宽带快，分享临时文件方便快捷；</li>
+<li>搭建在路由上，然后路由器通过 frp 内网穿透，远程访问家中路由器上文件，相对 NAS 更加省电，浏览图片和音乐家里的上传带宽也够用；</li>
+<li>相对于 Smb、ftp、webdav 连接过程更简单，用于在公用电脑上下载自己常用的软件，不需要安装任何客户端软件。直接建立一个公共只读账户，放一些自己常用的工具软件，方便传输。</li>
+</ul>
+<h3 id="如何搭建？"><a href="#如何搭建？" class="headerlink" title="如何搭建？"></a>如何搭建？</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://henriquedias.com/filemanager/get.sh | bash</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://henriquedias.com/filemanager/get.sh | bash</span><br></pre></td></tr></table></figure>
+<p>Windows 平台使用 PowerShell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwr -useb https://henriquedias.com/filemanager/get.ps1 | iex</span><br></pre></td></tr></table></figure>
+<h3 id="配置-FileManager"><a href="#配置-FileManager" class="headerlink" title="配置 FileManager"></a>配置 FileManager</h3><p><strong>简单配置</strong></p>
+<ul>
+<li>port：服务所用端口</li>
+<li>database：数据库存放地址</li>
+<li>scope：需要管理的文件夹路径</li>
+<li>allowCommands：允许使用指令</li>
+<li>allowEdit：允许进行文件编辑操作</li>
+<li>allowNew：允许进行新建文件和文件夹操作</li>
+<li>更多配置请参考官方文档 <a href="https://henriquedias.com/filemanager/configuration/" target="_blank" rel="noopener">配置文档
+</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/file/config.json</span><br><span class="line"><span class="meta">#</span> 文件内容</span><br><span class="line">&#123;</span><br><span class="line">  "port": 1250,</span><br><span class="line">  "database": "/etc/database.db",</span><br><span class="line">  "scope": "/home/zhangyongcun/doc/",</span><br><span class="line">  "allowCommands": true,</span><br><span class="line">  "allowEdit": true,</span><br><span class="line">  "allowNew": true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filemanager -c /etc/file/config.json</span><br></pre></td></tr></table></figure>
+<p>加入 supervisor</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/supervisor/conf.d/file.conf</span><br><span class="line"><span class="meta">#</span> 文件内容</span><br><span class="line">[program:file]</span><br><span class="line">user=root</span><br><span class="line">command=filemanager -c /etc/file/config.json</span><br><span class="line">process_name=%(program_name)s</span><br><span class="line">autostart=true</span><br><span class="line">redirect_stderr=true</span><br><span class="line">stdout_logfile=/var/log/file.log</span><br><span class="line">stdout_logfile_maxbytes=1MB</span><br><span class="line">stdout_logfile_backups=0</span><br></pre></td></tr></table></figure>
+<p>使用 nginx 转发端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/sites-enabled/file</span><br><span class="line"><span class="meta">#</span> 文件内容</span><br><span class="line">server &#123;</span><br><span class="line">        listen   80;</span><br><span class="line">        server_name  file.xxxx.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://localhost:1250;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>访问：file.xxxx.com 或者 xxxx.com:1250 即可，默认账户:admin 默认密码：admin 登陆之后可以进行密码重置。</p>
+<h3 id="界面预览"><a href="#界面预览" class="headerlink" title="界面预览"></a>界面预览</h3><p>基本功能</p>
+<p><img src="https://qn.zhangyongcun.com/2017-11-28-031630.png" alt=""></p>
+<p>多用户管理</p>
+<p><img src="https://qn.zhangyongcun.com/2017-11-28-031914.png" alt=""></p>
+<p>更多高级功能，请参考 <a href="https://github.com/hacdias/filemanager" target="_blank" rel="noopener">FileManager</a></p>
+
       
     </div>
     
